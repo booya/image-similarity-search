@@ -11,20 +11,20 @@ on:
       - 'scripts/run-*-tests.sh'
 jobs:
   build:
-  runs-on: debian-latest
-  env:
-      DOCKER_BUILDKIT: '1'
-  steps:
-    - name: checkout
-      uses: actions/checkout@v2
-      timeout-minutes: 2
+    runs-on: debian-latest
+    env:
+        DOCKER_BUILDKIT: '1'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        timeout-minutes: 2
 
-    - name: Build Container
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        push: false
-      timeout-minutes: 10
+      - name: Build Container
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: false
+        timeout-minutes: 10
 
-    # TODO
-    # - name: Upload to GAR
+      # TODO
+      # - name: Upload to GAR
