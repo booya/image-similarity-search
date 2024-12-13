@@ -11,7 +11,7 @@ on:
     #   # - 'tests/**'
 jobs:
     build:
-      runs-on: debian-latest
+      runs-on: ubuntu-latest
       env:
           DOCKER_BUILDKIT: '1'
       steps:
