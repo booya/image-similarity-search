@@ -1,14 +1,14 @@
 name: tests
 on:
   pull_request:
-    paths:
-      - 'poetry.lock'
-      - 'pyproject.toml'
-      - 'image_search/**'
-      - '.github/workflows/tests.yml'
-      - 'e2e/**'
-      - 'tests/**'
-      - 'scripts/run-*-tests.sh'
+    # paths:
+    #   - 'poetry.lock'
+    #   - 'pyproject.toml'
+    #   - 'image_search/**'
+    #   - '.github/workflows/tests.yml'
+    #   - 'e2e/**'
+    #   - 'tests/**'
+    #   - 'scripts/run-*-tests.sh'
 jobs:
   build:
     runs-on: debian-latest

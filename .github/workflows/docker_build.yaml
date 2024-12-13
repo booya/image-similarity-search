@@ -1,14 +1,14 @@
 name: docker_build
 on:
   pull_request:
-    paths:
-      - 'poetry.lock'
-      - 'pyproject.toml'
-      - 'image_search/**'
-      - '.github/workflows/docker_build.yml'
-      - 'Dockerfile'
-      # - 'e2e/**'
-      # - 'tests/**'
+    # paths:
+    #   - 'poetry.lock'
+    #   - 'pyproject.toml'
+    #   - 'image_search/**'
+    #   - '.github/workflows/docker_build.yml'
+    #   - 'Dockerfile'
+    #   # - 'e2e/**'
+    #   # - 'tests/**'
 jobs:
     build:
       runs-on: debian-latest
