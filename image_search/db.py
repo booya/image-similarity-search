@@ -9,7 +9,9 @@ from image_search.settings import get_settings
 
 
 class Image(SQLModel, table=True):
-    id: str | None = Field(default_factory=lambda: str(uuid4()), max_length=32, primary_key=True)
+    id: str | None = Field(
+        default_factory=lambda: str(uuid4()), max_length=32, primary_key=True
+    )
     filename: str
     # TODO: we should probably store the features in a separate table
     features: bytes
