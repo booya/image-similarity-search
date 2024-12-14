@@ -1,0 +1,16 @@
+appName: 'image-similarity-search'
+image:
+  repo: image-similarity-search
+  tag: latest
+  pullPolicy: IfNotPresent
+replicas: 1
+port: 8000
+svcPort: 8001
+newrelic:
+  appName: 
+  licenseKey:
+imageDir: /tmp/image-search
+sqliteUrl: sqlite:///tmp/image-search/image-search.sqlite
+resources:
+service:
+  type: 'ClusterIP'

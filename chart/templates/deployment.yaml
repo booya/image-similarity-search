@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $.Values.appName }}
+  labels:
+    app: {{ $.Values.appName }}
+spec:
+  replicas: {{ $.Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ $.Values.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ $.Values.appName }}
+    spec:
+      containers:
+        - name: {{ $.Values.appName }}
+          image: "{{ $.Values.image.repo }}:{{ $.Values.image.tag }}"
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          env:
+            - name: IMAGE_SEARCH_IMAGE_DIR
+              value: "{{ $.Values.imageDir }}"
+            - name: IMAGE_SEARCH_SQLITE_URL
+              value: "{{ $.Values.sqliteUrl }}"
+            {{- if $.Values.newrelic.licenseKey }}
+            - name: NEW_RELIC_LICENSE_KEY
+              value: "{{ $.Values.newrelic.licenseKey }}"
+            - name: NEW_RELIC_APP_NAME
+              value: "{{ $.Values.appName }}"
+            {{- end }}
+          ports:
+            - containerPort: {{ $.Values.port }}
+          {{- if $.Values.resources }}
+          resources: {{ $.Values.resources | toYaml | nindent 12 }}
+          {{- end }}

@@ -1,0 +1,4 @@
+apiVersion: v2
+description: Chart for installing image-similarity-search
+name: image-similarity-search
+version: 0.0.1
