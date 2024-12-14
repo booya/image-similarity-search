@@ -1,21 +1,22 @@
 from fastapi import APIRouter, UploadFile, HTTPException, Response
+import newrelic.agent
+
 
 from image_search.services.image_service import ImageServiceDep
 
 router = APIRouter()
 
-ALLOWED_CONTENT_TYPES = frozenset([
-    "image/jpeg",
-])
+ALLOWED_CONTENT_TYPES = frozenset(
+    [
+        "image/jpeg",
+    ]
+)
 
 
 # This is not async because we do CPU-bound work here
 @router.post("/upload/")
-def upload_image(
-        file: UploadFile,
-        image_service: ImageServiceDep,
-        response: Response
-):
+@newrelic.agent.function_trace(name="upload_image", group="api")
+def upload_image(file: UploadFile, image_service: ImageServiceDep, response: Response):
     try:
         if file.content_type not in ALLOWED_CONTENT_TYPES:
             raise InvalidFileTypeException(file.content_type)
