@@ -14,6 +14,7 @@ tensorflow = "^2.18.0"
 pillow = "^11.0.0"
 sqlmodel = "^0.0.22"
 scikit-learn = "^1.5.2"
+newrelic = "^10.4.0"
 
 
 [tool.poetry.group.dev.dependencies]
