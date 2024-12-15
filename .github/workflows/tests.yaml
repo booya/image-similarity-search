@@ -1,6 +1,7 @@
 name: tests
 on:
   pull_request:
+    # TODO: 
     # paths:
     #   - 'poetry.lock'
     #   - 'pyproject.toml'
@@ -27,14 +28,16 @@ jobs:
         with:
           python-version: '3.12'
 
+      # TODO: There's probably a good way to do much this with a single action
       - name: install poetry
         run: python3 -m pip install poetry
   
       - name: poetry install
         run: poetry install
 
-      - name: e2e tests
-        run: scripts/run-e2e-tests.sh
-
       - name: unit tests
         run: scripts/run-unit-tests.sh
+
+      - name: e2e tests
+        run: poetry run pytest e2e
+        # run: scripts/run-e2e-tests.sh # could probably delete the
