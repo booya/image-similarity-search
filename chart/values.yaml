@@ -9,8 +9,15 @@ svcPort: 8001
 newrelic:
   appName: 
   licenseKey:
-imageDir: /tmp/image-search
-sqliteUrl: sqlite:///tmp/image-search/image-search.sqlite
+imageDir: "/app/uploads"
+# sqliteUrl: "sqlite://" # or use memory
+sqliteUrl: "sqlite:////app/db/db.sqlite"
 resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 1
+    memory: 1024Mi
 service:
   type: 'ClusterIP'
